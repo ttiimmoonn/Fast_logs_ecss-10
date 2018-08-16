@@ -2,13 +2,14 @@
 import sys
 import os
 import datetime
-import paramiko
-import scp 
 import json
 import logging
 import argparse
 import zipfile
 import time
+import paramiko
+import scp 
+
 
 date_start_test = datetime.datetime.today().strftime("%Y_%m_%d_%H_%M_%S")
 FORMAT = '%(asctime)-15s %(message)s'
@@ -225,12 +226,20 @@ def archiving_log_files(host_data):
 	return 1
 
 
-#def cleaning_logs():
-
+def add_path_bin():
+	if not os.access("/usr/local/bin/down_logs", os.X_OK):
+		a = "#!/bin/bash\ncd {0}\n{0}/down_logs.py $*".format(os.getcwd())
+		with open("/usr/local/bin/down_logs", 'w') as f:
+				f.write(a)
+		os.chmod("/usr/local/bin/down_logs", 0o777)
+		logger.info("Create a directory to quickly launch the script.")
+	return 1
 
 
 
 if __name__ == "__main__":
+
+
 	#Создание объекта парсера аргументов из терминала
 	arg_parser = create_parser()
 	namespace = arg_parser.parse_args() 
@@ -279,4 +288,7 @@ if __name__ == "__main__":
 	#Создаем архив с файлами логов
 	if namespace.zip_arh:
 		archiving_log_files(custom_config)
+
+	#проверяем и если нет, создаем файл запуска скрипта по пути /usr/locate/bin
+	add_path_bin()
 
