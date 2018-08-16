@@ -1,4 +1,4 @@
-<h1> Fast logs ecss-10 </h1>
+<h1> Fast logs ECSS-10 </h1>
 Python 3.5. or greater
 
 <h2> [en] </h2>
