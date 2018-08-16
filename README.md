@@ -1,5 +1,6 @@
 <h1> Fast logs ECSS-10 </h1>
 Python 3.5. or greater
+Modules are required: paramiko, scp.
 
 <h2> [en] </h2>
 A script for working log files from SSW ECSS-10 companies Eltex.
