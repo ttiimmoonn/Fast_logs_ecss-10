@@ -1,0 +1,14 @@
+{
+  "SystemVars": [
+    {
+      "%%EXTER_IP%%": "",
+      "%%DEV_USER%%": "",
+      "%%DEV_PASS%%": "",
+      "%%SSW_USER%%": "",
+      "%%SSW_PASS%%": "",
+      "%%PATH_LOC_LOG%%": "",
+      "%%PATH_REMOTE_LOG%%": "/var/log/ecss",
+      "%%PATH_DIR_STRUCT_LOG%%": ""
+    }
+  ]
+}
