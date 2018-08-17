@@ -12,7 +12,7 @@ import scp
 
 
 date_start_test = datetime.datetime.today().strftime("%Y_%m_%d_%H_%M_%S")
-FORMAT = '%(asctime)-15s %(message)s'
+FORMAT = '%(asctime)-15s %(levelname)-8s %(message)s'
 logger = logging.getLogger("logger")
 logger.setLevel(logging.INFO)
 logging.basicConfig(format=FORMAT)
@@ -179,26 +179,6 @@ def request_node_version(command_list, host_data, port_rm = 22):
 		logger.error("Сan not edit file: {}/ssw_version.txt".format(path_loc_log))
 	logger.info("Successfully.")
 	return 1
-
-'''
-	for command in command_list:
-		print (command)
-		try:
-			client_ssh.connect(hostname=host_data["%%EXTER_IP%%"], username=host_data["%%SSW_USER%%"], password=host_data["%%SSW_PASS%%"], port=port_rm)
-		except Exception:
-			logger.error("Сan not connect to the server:", host_data["%%EXTER_IP%%"])
-			return False
-		stdin, stdout, stderr = client_ssh.exec_command(command)
-		print (stdout)
-		logger.debug("Path to ssw_version.txt: {}/ssw_version.txt".format(path_loc_log))
-		with open("{}/ssw_version.txt".format(path_loc_log), 'a') as f:
-			for line in stdout:
-				print (line)
-				f.write('... ' + line.strip('\n') + "\n")
-				print ("Записали в файл")
-		print ("Закрыли файл")
-'''
-
 
 # Создаем архив с файлами логов
 def archiving_log_files(host_data):
