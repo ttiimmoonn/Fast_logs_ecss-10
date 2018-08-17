@@ -41,7 +41,6 @@ def dow_file(path_remote, path_remote_log, host_data):
 	if os.access(path_loc_log, os.F_OK) == False:
 		os.makedirs(path_loc_log)
 	client_ssh = paramiko.SSHClient()
-	client_ssh.load_system_host_keys()
 	client_ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 	try:
 		client_ssh.connect(hostname=host_data["%%EXTER_IP%%"], username=host_data["%%SSW_USER%%"], password=host_data["%%SSW_PASS%%"])
@@ -156,7 +155,6 @@ def request_node_version(command_list, host_data, port_rm = 22):
 	if os.access(path_loc_log, os.F_OK) == False:
 		os.makedirs(path_loc_log)
 	client_ssh = paramiko.SSHClient()
-	client_ssh.load_system_host_keys()
 	client_ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 	#
 	try:
